@@ -1,0 +1,218 @@
+<mvc:View controllerName="Orbit.controller.Index"  xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" displayBlock="true" xmlns="sap.m" xmlns:tnt="sap.tnt"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" xmlns:viz="sap.viz.ui5.controls"
+	xmlns:c="sap.suite.ui.microchart" > <!--Bring offline-->
+	<App>
+		<pages>
+			<Page visible="true" showHeader="False" id="contentWindow">
+				<content class="sapUiMediumMargin">
+					
+					<!--<Button text="Test" press="sendTestScan"/>-->
+					
+					<!--Side menu-->
+					<Button class="menuButtonStyle" icon="sap-icon://menu2" press="openSideMenu"/>
+					<VBox id="sideMenuID" width="270px" visible="false" alignItems="Center" > 
+						<Text text="ORBIT Configurations" class="tileTitleStyle sapUiSmallMarginBottom" />
+						<Image src="img/line.png" width="100%" class="sapUiTinyMarginBottom"/>
+						<!--<Button width="200px" text="Heatmap" press="openHeatmap"/>-->
+						<!--<Button width="200px" text="SFC Status" press="openSFCMonitor"/>-->
+						<Button width="200px" text="Activity/WIP Feed" press="switchActivityOrTracking" class="sapUiTinyMarginBottom"/>
+						<HBox>
+							<Title text="WIP Range: " class="sapUiTinyMarginEnd sapUiSmallMarginTop"/>
+							<Input id="wipinput1" type="Number" placeholder="min" value="105" width="50px" liveChange="wipInputFields" class="sapUiTinyMarginEnd"/>
+							<Input id="wipinput2" type="Number" placeholder="max" value="120" width="50px" liveChange="wipInputFields"/>
+						</HBox>
+						<Image src="img/line.png" width="100%" class="sapUiSmallMarginTopBottom"/>
+					
+						<Button width="200px" icon="sap-icon://overview-chart" text="Notification Settings" press="openNotificationSettings" />
+						<Button width="200px" icon="sap-icon://building" text="DMC Release Order" press="getListofDMEOrderItems"/>
+						<!--<Button width="200px" icon="sap-icon://syntax" text="DMC Line Monitor" press="openDMELineMonitor"/>-->
+						
+						<!--<Button width="200px" icon="sap-icon://blur" text="Fire!!!" press="testFireNotification"/>-->
+					</VBox>
+					
+					<HBox justifyContent="Center" width="100%" class="sapUiSmallMarginTop" id="logoContainer">
+						<Image class="logoImageStyle" height="100px" src="img/newlogoyellow.png"/>
+					</HBox>
+					
+					<HBox width="100%" justifyContent="Center" id="scalableContainer">
+						<HBox width="1890px"  justifyContent="Center" class="sapUiLargeMarginBeginEnd sapUiMediumMarginTop" > <!--alignContent="Center" alignItems="Center"-->
+							<!--LEFT COLUMN-->
+							<VBox>
+								<HBox>
+									<!--TOTAL UNITS PRODUCED TODAY TILE-->
+									<VBox id="totalScannedContainer" height="400px" class="sapUiSmallMarginTop">   <!--width="610px"-->
+										<Text text="TODAYS TOTAL UNITS PRODUCED" class="tileTitleStyle" />
+										<HBox justifyContent="Center" alignItems="Center">
+											<VBox width="90%" alignItems="End">
+												<VBox id="ballCountContainer" justifyContent="Center" alignItems="Center" width="175px">
+													<Text class="whiteSubtextStyle" text="Today's Total"/>
+													<Text id="totalUnitsProducedText" class="whiteTextStyle" text="0"/>
+												</VBox>
+											</VBox>
+											<!--BAR GRAPH-->
+											<c:InteractiveBarChart labelWidth="20%" displayedBars="5" class="sapUiSmallMarginBegin sapUiMediumMarginTop" 
+																	bars="{totalBallsGraphJSON>/}" id="totalBarChartID"> 
+												<c:InteractiveBarChartBar label="{totalBallsGraphJSON>time}:00" value="{totalBallsGraphJSON>count}" /> 
+											</c:InteractiveBarChart>
+										</HBox>
+										<HBox width="100%" justifyContent="Center" alignItems="Center" class="totalUnitsTodayLabelContainer">
+											<Text text="Hour" class="splineChartLabels sapUiLargeMarginEnd"/>
+											<Text text="Count" class="splineChartLabels"/>
+										</HBox>
+									</VBox>
+									
+									<!--PRODUCION RATE TILE-->
+									<VBox id="productionRateContainer" width="480px" height="400px">
+										<Text text="PRODUCTION RATE" class="tileTitleStyle" />
+										<HBox justifyContent="Center" alignItems="Center" class="sapUiSmallMargin">
+											<Image src="img/stopwatch.png" height="40px" class="sapUiSmallMarginEnd"/>
+											<Text id="averageScansPerHourText" class="blueTextStyle" text="0"/>
+											<Text class="blueSubtextStyle sapUiTinyMarginBegin" text="Units/hr"/>
+										</HBox>
+										<Image src="img/line.png" width="400px" class="sapUiSmallMarginBeginEnd"/>
+										<HBox width="100%" justifyContent="End" alignItems="End" class="sapUiTinyMarginTop">
+											<Image src="img/blueRect.png" height="6px" width="25px" class="sapUiTinyMarginEnd"/>
+											<Text text="Actual" class="sapUiSmallMarginEnd"/>
+											<Image src="img/yellowRect.png" height="6px" width="25px" class="sapUiTinyMarginEnd"/>
+											<Text text="Expected" class="sapUiMediumMarginEnd"/>
+										</HBox>
+										
+										<!--SPLINE CHART 2-->
+										<HBox width="100%" justifyContent="Center" alignItems="Center" id="svgContainer">
+											<Text text="Rate" wrapping="false" class="splineChartLabelsHorizontal"/>
+											<html:svg width="400px" height="200px" id="splineID" class="splineGraphStyle"/>
+										</HBox>
+										<HBox width="100%" justifyContent="Center" alignItems="Center">
+											<Text text="Hour" class="splineChartLabels"/>
+										</HBox>
+									</VBox>
+								</HBox>
+								
+								<!--CURRENT CAPACITY TILE-->	
+								<HBox>
+									<VBox id="capacityContainer"  height="400px">
+										<Text text="CAPACITY BY OPERATION" class="tileTitleStyle"/>
+										<HBox class="sapUiSmallMarginTop sapUiTinyMarginBeginEnd">
+											<VBox width="150px">
+												<!--GAUGE 1-->
+												<VBox id="gauge1ID"></VBox> 
+											</VBox>
+											<VBox height="145px" width="200px" justifyContent="Center" alignItems="Center"> 
+												<Title text="Assembly" class="yellowTextStylePhase sapUiSmallMarginEnd"/>
+											</VBox>
+										</HBox>
+										<HBox class="sapUiTinyMarginTop sapUiTinyMarginBeginEnd">
+											<VBox height="145px" width="200px" justifyContent="Center" alignItems="Center">
+												<Title text="Inspection" class="yellowTextStylePhase sapUiSmallMarginBegin"/>
+											</VBox>
+											<VBox width="150px">
+												<!--GAUGE 2-->
+												<VBox id="gauge2ID" ></VBox>
+											</VBox>
+										</HBox>
+									</VBox>
+									
+									<!--FAILURE RATE TILE-->
+									<VBox id="failureRateContainer" height="400px">
+										<Text text="FAILURE RATE BY OPERATION" class="tileTitleStyle"/>
+										<viz:VizFrame id="idFailureBarFrame" uiConfig="{applicationSet:'fiori'}" width="580px" height="300px"
+										vizType='column' legendVisible="false" class="sapUiLargeMarginTop">
+											<viz:dataset>
+												<viz.data:FlattenedDataset data="{/items}">
+													<viz.data:dimensions>
+														<viz.data:DimensionDefinition name="Name" value="{name}"/>
+													</viz.data:dimensions>
+													<viz.data:measures>
+														<viz.data:MeasureDefinition name="ID" value="{id}"/>
+														<viz.data:MeasureDefinition name="Time" value="{time}"/>
+													</viz.data:measures>
+												</viz.data:FlattenedDataset>
+											</viz:dataset>
+											<viz:feeds>
+												<viz.feeds:FeedItem id='valueAxisFeed1' uid="valueAxis" type="Measure" values="ID"/>
+												<viz.feeds:FeedItem id='valueAxisFeed2' uid="valueAxis" type="Measure" values="Time"/>
+												<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Name"/>
+											</viz:feeds>
+										</viz:VizFrame>
+									</VBox>     
+								</HBox>
+							</VBox>
+							
+							<!--RIGHT COLUMN-->
+							<VBox width="500px" >
+								
+								<!--MESSAGE CENTER TILE-->
+								<VBox id="messageCenterContainer" height="225px">
+									<Text text="MESSAGE CENTER" class="sapUiTinyMarginBottom tileTitleStyle"/>
+									<ScrollContainer class="notificationListStyle" vertical="true">
+										<List id="messageCenterList" items="{notificationsModel>/Notifications}" >
+											<StandardListItem title="{notificationsModel>message}"/> <!--{path:'notificationsModel>color', formatter:'.notificationMessageBackground'}   {= ${notificationsModel>color} === '#008FD3'?'blueListItemBackground':'yellowListItemBackground'}-->
+										</List>
+									</ScrollContainer>
+								</VBox>
+								
+								<!--ACTIVITY FEED TILE-->
+								<VBox height="575px"  id="feedContainer">
+									<!--Activity Feed container-->
+									<VBox id="activityFeedContainer" visible="false">
+										<Text text="ACTIVITY FEED" class="sapUiSmallMarginBottom tileTitleStyle"/>
+										<HBox width="100%" justifyContent="End" alignItems="End" class="sapUiTinyMarginBottom scannerIdentifierStyle">
+											<Image src="img/blue.png" height="10px" class="sapUiTinyMarginEnd"/>
+											<Text text="Phase 1" class="sapUiSmallMarginEnd"/>
+											<Image src="img/yellow.png" height="10px" class="sapUiTinyMarginEnd"/>
+											<Text text="Phase 2" class="sapUiMediumMarginEnd"/>
+										</HBox>
+										<ScrollContainer class="feedStyle" vertical="false">
+											<Table id="feedTableID" items="{ballFeed>/results}" ><!--growingThreshold="10" growing="true"-->
+												<columns>
+													<Column hAlign="Center" width="80px">
+														<Label text="Scanner"/>
+													</Column>
+													<Column hAlign="Center"  width="70px">
+														<Label text="Time"/>
+													</Column>
+													<Column hAlign="Center">
+														<Label text="Serial #"/>
+													</Column>
+												</columns>
+												<items>
+													<ColumnListItem>
+														<cells>
+															<Image class="scannerIcons" src="img/{= ${ballFeed>LOCATIONID} === 'reader1'?'blue':'yellow'}.png"/> <!--IF statement in xml-->
+															<!--<Text text="{ballFeed>LOCATIONID}" wrapping="false"/>-->
+															<Text text="{path:'ballFeed>_MESSAGEGATEWAY_TIMEISO8601', formatter:'.convertFromISOtoDate'}" wrapping="false"/> <!--Pass vlaue to function-->
+															<Text text="{ballFeed>ASSETID}" wrapping="false"/>
+														</cells>
+													</ColumnListItem>
+												</items>
+											</Table>
+										</ScrollContainer>
+									</VBox>
+									
+									<!--Production Tracking container-->
+									<VBox id="productionTrackingContainer" visible="true">
+										<HBox width="100%">
+											<Text id="wipLabel" wrapping="false" text="WORK IN PROCESS" class="sapUiSmallMarginBottom tileTitleStyle"/>
+											<HBox width="100%" justifyContent="End" alignItems="End">
+												<Title id="wipFailingMessageID" text="" class="wipFailingMessageClass" />
+												<Button text="Reset" press="resetWIP"/>
+											</HBox>
+										</HBox>
+										<ScrollContainer class="wipStyle" vertical="false">
+											<List id="productionTrackingTableID" items="{trackProductionProgressModel>/}"> <!--items="{trackProductionProgressModel}"-->
+												<StandardListItem title="Item {trackProductionProgressModel>assetId} scanned at {path:'trackProductionProgressModel>_MessageGateway_TimeISO8601', formatter:'.convertFromISOtoDate'}."/>
+											</List>
+										</ScrollContainer>
+									</VBox>
+									
+								</VBox>
+							</VBox>
+						</HBox>
+					</HBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

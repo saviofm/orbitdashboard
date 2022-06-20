@@ -1,0 +1,200 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<Dialog id="notificationSettingsDialog" contentWidth="720px" contentHeight="650px" title="NOTIFICATION SETTINGS">
+		<VBox class="sapUiSmallMargin">
+				<HBox class="sapUiMediumMarginBottom">
+					<!--<Select class="sapUiSmallMarginBeginEnd" forceSelection="true" change="notificationSelectionChange">-->
+					<!--	<core:Item key="counterfeit" text="Counterfeit" />-->
+					<!--	<core:Item key="capacity" text="Capacity" />-->
+					<!--</Select>-->
+					<CheckBox id="notificationsEnabled" class="notificationsEnabledTickBox" selected="{NotificationSettings>/RulesSettings/NotificationsActive}"/>
+					<Title text="Enable Notifications" class="sapUiSmallMarginTop"/>
+				</HBox>
+				
+				<VBox id="counterfeitBallContainer" visible="true">
+					<Title text="ID of Counterfeit Ball:" class="sapUiSmallMarginBegin"/>
+					<Input id="errorBallInput" placeholder="#000000" width="12em" class="sapUiSmallMarginBegin sapUiMediumMarginBottom" liveChange="changeBallIDtoCheck"/>
+					
+					<Title text="Number of failing items to trigger notification: " class="sapUiSmallMarginBegin"/>-->
+					<Input id="quantityToGenerateNotitificationInput" placeholder="1<_<50" width="12em" class="sapUiSmallMarginBegin sapUiMediumMarginBottom" liveChange="changeErrorQuantityToCheck"/>
+				</VBox>
+
+				<!--<VBox id="capacityConfigContainer" visible="false">-->
+				<!--	<Title text="Notification Rules:" class="sapUiSmallMarginBegin"/>-->
+				<!--	<HBox class="sapUiSmallMarginBegin sapUiMediumMarginBottom">-->
+				<!--		<Input value="{NotificationSettings>/RulesSettings/Selected/Path}" editable="false" width="12em" class="sapUiSmallMarginEnd"/>				-->
+				<!--		<Select-->
+				<!--			id="rulesOperand"-->
+				<!--			forceSelection="false"-->
+				<!--			selectedKey="{NotificationSettings>/RulesSettings/Selected/Operand}"-->
+				<!--			items="{NotificationSettings>/RulesSettings/Operands}" class="sapUiSmallMarginEnd">-->
+				<!--			<core:Item key="{NotificationSettings>Operand}" text="{NotificationSettings>Operand}" />-->
+				<!--		</Select>-->
+				<!--		<Input id="rulesValue" value="{NotificationSettings>/RulesSettings/Selected/Value}" />-->
+				<!--	</HBox>-->
+				
+				<!--	<Title text="Notification Message:" class="sapUiSmallMarginBegin"/>-->
+				<!--	<HBox class="sapUiSmallMarginBegin sapUiSmallMarginBottom">-->
+				<!--		<Input value="{NotificationSettings>/RulesSettings/Selected/SensorName}" width="12em" class="sapUiSmallMarginEnd">-->
+				<!--		</Input>-->
+				<!--		<Input value="{NotificationSettings>/RulesSettings/Message}" >-->
+				<!--		</Input>-->
+				<!--	</HBox>-->
+				<!--</VBox>-->
+				
+		</VBox>
+		<IconTabBar
+			id="rulesTabBar"
+			expanded="{device>/isNoPhone}"
+			class="sapUiResponsiveContentPadding ruleTabBar sapUiMediumMarginBottom"
+			backgroundDesign="Transparent">
+			<items>
+				<IconTabFilter
+					text="Phone">
+					<l:Grid
+						class="sapUiSmallMarginTop"
+						hSpacing="2"
+						defaultSpan="L12 M12 S12">
+						<l:content>
+							<Label text="Active" class="sapUiSmallMarginTop">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</Label>
+							<CheckBox id="rulesPhoneActive" selected="{NotificationSettings>/Services/SMS/Active}">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</CheckBox>
+							<Label text="Phone Number"  class="sapUiSmallMarginTop">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</Label>
+							<Input id="rulesInputPhoneNum" value="{NotificationSettings>/Services/SMS/PhoneNumber}" >
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</Input>
+							<Label text="SMS Message" class="sapUiSmallMarginTop">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</Label>
+							<TextArea id="rulesInputPhoneMessage" width="100%" value="{NotificationSettings>/Services/SMS/Text}" >
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</TextArea>
+						</l:content>
+					</l:Grid>
+				</IconTabFilter>
+				<IconTabFilter
+					text="Ariba">
+					<l:Grid
+						class="sapUiSmallMarginTop"
+						hSpacing="2"
+						defaultSpan="L12 M12 S12">
+						<l:content>
+							<Label text="Active" class="sapUiSmallMarginTop">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</Label>
+							<CheckBox id="rulesAribaActive"  selected="{NotificationSettings>/Services/Ariba/Active}">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</CheckBox>
+						</l:content>
+					</l:Grid>
+				</IconTabFilter>
+				<IconTabFilter
+					text="C4C">
+					<l:Grid
+						class="sapUiSmallMarginTop"
+						hSpacing="2"
+						defaultSpan="L12 M12 S12">
+						<l:content>
+							<Label text="Active" class="sapUiSmallMarginTop">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</Label>
+							<CheckBox id="rulesC4CActive" selected="{NotificationSettings>/Services/C4C/Active}">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</CheckBox>
+							<Label text="C4C Tenant" class="sapUiSmallMarginTop">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</Label>
+							<Input id="rulesInputC4CTenant" value="{NotificationSettings>/Services/C4C/Tenant}">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</Input>
+							<Label text="C4C Message" class="sapUiSmallMarginTop">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</Label>
+							<Input id="rulesInputC4CMessage" value="{NotificationSettings>/Services/C4C/Message}">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</Input>
+						</l:content>
+					</l:Grid>
+				</IconTabFilter>
+				<!--<IconTabFilter-->
+				<!--	text="Marketing Cloud">-->
+				<!--	<l:Grid-->
+				<!--		class="sapUiSmallMarginTop"-->
+				<!--		hSpacing="2"-->
+				<!--		defaultSpan="L12 M12 S12">-->
+				<!--		<l:content>-->
+				<!--			<Label text="Active" class="sapUiSmallMarginTop">-->
+				<!--				<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>-->
+				<!--			</Label>-->
+				<!--			<CheckBox id="rulesMarketingActive" selected="{NotificationSettings>/Services/Marketing/Active}">-->
+				<!--				<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>-->
+				<!--			</CheckBox>-->
+				<!--			<Label text="Streaming" class="sapUiSmallMarginTop">-->
+				<!--				<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>-->
+				<!--			</Label>-->
+				<!--			<CheckBox id="rulesMarketingStreaming" selected="{NotificationSettings>/Services/Marketing/Streaming}" tooltip="Once alert is triggered, will continue streaming every 1 minute">-->
+				<!--				<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>-->
+				<!--			</CheckBox>-->
+				<!--			<Label text="Email" class="sapUiSmallMarginTop">-->
+				<!--				<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>-->
+				<!--			</Label>-->
+				<!--			<Input id="marketingEmail" value="{NotificationSettings>/Services/Marketing/Email}" placeholder="max.mustermann@sap.com">-->
+				<!--				<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>-->
+				<!--			</Input>-->
+				<!--			<Label text="Tenant" class="sapUiSmallMarginTop">-->
+				<!--				<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>-->
+				<!--			</Label>-->
+				<!--			<Input id="marketingTenant" value="{NotificationSettings>/Services/Marketing/Tenant}" tooltip="IMPORTANT: Please ensure the custom fields are enabled in your private tenant. See documentation for details">-->
+				<!--				<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>-->
+				<!--			</Input>-->
+				<!--		</l:content>-->
+				<!--	</l:Grid>-->
+				<!--</IconTabFilter>-->
+				<IconTabFilter
+					text="S/4HANA">
+					<l:Grid
+						class="sapUiSmallMarginTop"
+						hSpacing="2"
+						defaultSpan="L12 M12 S12">
+						<l:content>
+							<Label text="Active" class="sapUiSmallMarginTop">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</Label>
+							<CheckBox id="rulesS4HanaActive" selected="{NotificationSettings>/Services/S4HANA/Active}">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</CheckBox>
+						</l:content>
+					</l:Grid>
+				</IconTabFilter>
+				<IconTabFilter text="ByDesign">
+                    <l:Grid class="sapUiSmallMarginTop" hSpacing="2" defaultSpan="L12 M12 S12">
+                        <l:content>
+                            <HBox justifyContent="Center" alignItems="Center">
+                                <Image src="image/ByD.png" width="50%"/>
+                            </HBox>
+                            <Label text="Active" class="sapUiSmallMarginTop">
+                                <layoutData><l:GridData span="L6 M6 S6"/></layoutData>
+                            </Label>
+                            <CheckBox id="rulesByDesignActive" selected="{NotificationSettings>/Services/ByDesign/Active}">
+                                <layoutData><l:GridData span="L6 M6 S6"/></layoutData>
+                            </CheckBox>
+                            <Label text="Tenant" class="sapUiSmallMarginTop">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</Label>
+							<Input id="byDesignTenant" value="{NotificationSettings>/Services/ByDesign/Tenant}" placeholder="https://my341975.sapbydesign.com/ ">
+								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
+							</Input>
+                        </l:content>
+                    </l:Grid>
+                </IconTabFilter>
+			</items>
+		</IconTabBar>
+		<buttons id="buttonsDialog">
+			<Button text="Close" press="closeNoteSettingsDialog"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+		<meta charset="UTF-8">
+
+		<title>Orbit</title>
+		<link rel="shortcut icon" href="img/favicon.png">
+		<script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js" ></script>
+		
+		<script id="sap-ui-bootstrap"
+			src="https://sapui5.hana.ondemand.com/1.98.0/resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-resourceroots='{"Orbit": ""}'>
+		</script>
+		
+		<script src="js/gauge.js" type="text/javascript"></script>
+		<script src="js/splineGraph.js" type="text/javascript"></script>
+		<script src="lib/NotificationRulesEngine.js" type="text/javascript"></script>
+		
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		
+	
+		<script>
+			sap.ui.getCore().attachInit(function() {
+				new sap.m.Shell({
+					app: new sap.ui.core.ComponentContainer({
+						height : "100%",
+						name : "Orbit"
+					})
+				}).placeAt("content");
+			});
+		</script>
+		
+		
+	</head>
+
+	<body class="sapUiBody" id="content">
+		<div id="datatable"></div>
+	</body>
+
+</html>

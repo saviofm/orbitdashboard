@@ -1,0 +1,114 @@
+{
+  "welcomeFile": "/webapp/index.html",
+  "authenticationMethod": "none",
+  "routes": [
+    {
+      "path": "/MGWMS_Orbit",
+      "target": {
+        "type": "destination",
+        "name": "MGWMS_Orbit"
+      },
+      "description": "MGWMS Orbit"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    
+    
+    
+     
+    
+    
+
+    {
+      "path": "/DME_ReleaseOrder_solex",
+      "target": {
+        "type": "destination",
+        "name": "DME_ReleaseOrder_solex",
+        "headerWhiteList": [
+        	"x-dme-plant"
+        ]
+      },
+      "description": "Release shop order old: DME_ReleaseOrder"
+    },
+    {
+      "path": "/DME_Orbit_Start_solex",
+      "target": {
+        "type": "destination",
+        "name": "DME_Orbit_Start_solex",
+        "headerWhiteList": [
+        	"x-dme-plant"
+        ]
+      },
+      "description": "Start routes"
+    },
+    {
+      "path": "/DME_Orbit_Complete_solex",
+      "target": {
+        "type": "destination",
+        "name": "DME_Orbit_Complete_solex",
+        "headerWhiteList": [
+        	"x-dme-plant"
+        ]
+      },
+      "description": "Complete routes"
+    },
+    
+    
+    {
+      "path": "/workOrder",
+      "target": {
+        "type": "destination",
+        "name": "workOrder"
+      },
+      "description": "workOrder"
+    },
+    {
+      "path": "/CallSMS",
+      "target": {
+        "type": "destination",
+        "name": "CallSMS"
+      },
+      "description": "CallSMS"
+    },
+    {
+      "path": "/c4cticket",
+      "target": {
+        "type": "destination",
+        "name": "c4cticket"
+      },
+      "description": "c4cticket"
+    },
+    {
+      "path": "aribaRequisition",
+      "target": {
+        "type": "destination",
+        "name": "aribaRequisition"
+      },
+      "description": "aribaRequisition"
+    }
+  ],
+  "sendWelcomeFileRedirect": true,
+  "cacheControl": [
+    {
+      "directive": "private",
+      "maxAge": 0,
+      "path": "*html"
+    },
+    {
+      "directive": "private",
+      "maxAge": 0,
+      "path": "sap-ui-cachebuster-info.json"
+    },
+    {
+      "directive": "public",
+      "maxAge": 31536000
+    }
+  ]
+}

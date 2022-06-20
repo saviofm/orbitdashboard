@@ -1,0 +1,10 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<Dialog id="notificationDialog"  title="Notifications">
+		<List items="{Notifications>/Notifications}"  >
+			<StandardListItem  type="Active" class="wrapText" title="{Notifications>Message}" description="{Notifications>Date}"/>
+		</List>
+		<buttons id="buttonsDialog">
+			<Button text="Close" press="closeNotificationsDialog"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

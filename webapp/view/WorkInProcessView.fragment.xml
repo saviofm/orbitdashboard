@@ -1,0 +1,54 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Dialog id="WorkInProcessViewID" showHeader="false" horizontalScrolling="False" verticalScrolling="False"> <!--contentHeight="1000px" contentWidth="1200px"-->
+		<content class="sapUiMediumMargin">
+			
+			<Title text="Work In Process"  class="tileTitleStyle sapUiMediumMarginTop sapUiMediumMarginBegin"/>
+			<HBox class="sapUiSmallMargin" >
+				<VBox class="sapUiSmallMarginBeginEnd">
+					<!--<ScrollContainer class="notificationListStyle sapUiSmallMargin" vertical="true" height="500px">-->
+					<List> <!--items="{notificationsModel>/Notifications}"-->
+						<StandardListItem title="Ball 12345 Scanned"/>  <!--{notificationsModel>message}-->
+						<StandardListItem title="Ball 11111 Scanned"/>
+						<StandardListItem title="Ball 92038 Scanned"/>
+						<StandardListItem title="Ball 17253 Scanned"/>  
+						<StandardListItem title="Ball 00128 Scanned"/>
+						<StandardListItem title="Ball 20136 Scanned"/>
+					</List>
+					<!--</ScrollContainer>-->
+					<HBox justifyContent="Center" alignItems="Center" class="sapUiMediumMargin">
+						<Text text="Work In Process"/>
+					</HBox>
+				</VBox>
+				<VBox class="sapUiSmallMarginBeginEnd" > <!--justifyContent="Center" alignItems="Center"-->
+					<!--<Button text="Reset Window" press="resetWIPView"/>-->
+					<HBox justifyContent="Center" alignItems="Center" class="wipCountStyle sapUiSmallMarginTop">
+						<Text text="50" class="wipCountTextStyle"/>
+					</HBox>
+					<Text text="Average Production Time: "/>
+					<Text text="Total: "/>
+					<Text text="Total Items Produced: "/>
+				</VBox>
+				<!--<VBox>-->
+					<!--<HBox class="sapUiMediumMarginBottom">-->
+						<VBox class="sapUiSmallMarginBeginEnd">
+							<!--<ScrollContainer class="notificationListStyle sapUiSmallMargin" vertical="true" height="500px">-->
+							<List>
+								<StandardListItem title="Ball 12345 Scanned"/>  
+								<StandardListItem title="Ball 11111 Scanned"/>
+								<StandardListItem title="Ball 92038 Scanned"/>
+							</List>
+							<!--</ScrollContainer>-->
+							<HBox justifyContent="Center" alignItems="Center" class="sapUiMediumMargin">
+								<Text text="Completed"/>
+							</HBox>
+						</VBox>
+					<!--</HBox>-->
+				<!--</VBox>-->
+			</HBox>
+		</content>
+		<buttons>
+			<Button text="Reset Window" press="resetWIPView"/>
+			<Button text="Close" press="closeWIPView"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

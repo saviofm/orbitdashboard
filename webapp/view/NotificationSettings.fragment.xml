@@ -1,0 +1,75 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Dialog id="notificationSettingsDialog" contentWidth="720px"  title="Notification Settings"> 
+		<content>
+			<VBox class="sapUiSmallMargin sapUiMediumMarginTop">
+				<Title text="ID of Counterfeit Ball:" class="sapUiSmallMarginBegin"/>
+				<Input	id="errorBallInput" 
+						placeholder="#000000" 
+						width="12em" 
+						class="sapUiSmallMarginBegin sapUiMediumMarginBottom" 
+						value="0419FE98077C"
+						textAlign="Center"/>
+				
+				<Title text="Number of failing items to trigger notification: " class="sapUiSmallMarginBegin"/>
+				<Input	id="quantityToGenerateNotification" 
+						width="12em" 
+						placeholder=" Between 1 - 50" 
+						class="sapUiSmallMarginBegin sapUiMediumMarginBottom" 
+						type="Number"
+						textAlign="Center"
+						maxLength="50"/>
+			</VBox>
+			<IconTabBar class="sapUiResponsiveContentPadding sapUiMediumMarginBottom">
+				<items>
+					<!--SMS-->
+					<IconTabFilter text="SMS">
+						<HBox class="sapUiSmallMargin">
+							<VBox class="sapUiSmallMarginEnd">
+								<Title text="Enable SMS:" class="sapUiSmallMarginTop"/>
+								<Title text="Phone Number: " class="sapUiMediumMarginTop"/>
+								<Title text="SMS Message: " class="sapUiSmallMarginTop"/>
+							</VBox>
+							<VBox>
+								<CheckBox id="rulesSMSCheckbox" />
+								<Input id="rulesSMSPhone" type="Number" width="12em" placeholder="+1xxxxxxxxxx"  />
+								<TextArea id="rulesSMSMessage" width="12em" value="Error detected in manufacturing process!"/>
+							</VBox>
+						</HBox>
+					</IconTabFilter>
+					<!--HANA-->
+					<IconTabFilter text="S/4HANA" enabled="false">
+						<HBox class="sapUiSmallMargin"> 
+							<Title text="S/4HANA Active: " class="sapUiSmallMarginTop"/>
+							<CheckBox id="rulesS4HanaActive"/>
+						</HBox>
+					</IconTabFilter>
+					<!--C4C-->
+					<IconTabFilter text="C4C" enabled="false">
+						<HBox class="sapUiSmallMargin">
+							<VBox class="sapUiSmallMarginEnd">
+								<Title text="Active: " class="sapUiSmallMarginTop"/>
+								<Title text="C4C Tenant: " class="sapUiSmallMarginTop"/>
+								<Title text="C4C Message: " class="sapUiSmallMarginTop"/>
+							</VBox>
+							<VBox>
+								<CheckBox id="rulesC4CActive"/>
+								<Input id="rulesInputC4CTenant" width="12em" value=""/>
+								<Input id="rulesInputC4CMessage" width="12em" value=""/>
+							</VBox>
+						</HBox>
+					</IconTabFilter>
+					<!--Ariba-->
+					<IconTabFilter text="Ariba" enabled="false">
+						<HBox class="sapUiSmallMargin"> 
+							<Title text="Ariba Active: " class="sapUiSmallMarginTop"/>
+							<CheckBox id="rulesAribaCheckbox"  selected=""/>
+						</HBox>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<buttons>
+			<Button text="Done" press="closeNotificationSettingsDialog"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Dialog id="SFCMonitorViewID" showHeader="false" horizontalScrolling="False" verticalScrolling="False" contentHeight="1000px"> <!--contentHeight="1000px" contentWidth="1200px"-->
+		<content >
+			<VBox class="sapUiMediumMargin" >
+				<Title text="SFC Monitor"  class="tileTitleStyle sapUiTinyMarginBegin sapUiTinyMarginBottom"/>
+				
+			</VBox>
+		</content>
+		<buttons>
+			<Button text="Close" press="closeSFCMonitor"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
