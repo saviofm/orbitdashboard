@@ -122,7 +122,7 @@ sap.ui.define([
 				})
 				.done(function () {
 					notifications.unshift({
-						"Message": "SMS send to technician.",
+						"Message": "SMS enviado para tecnico",
 						"Time": Date.now()
 					});
 				})
@@ -145,7 +145,7 @@ sap.ui.define([
 					tenant: noteSettings["Services"]["C4C"]["Tenant"]
 				};
 				$.post("/c4cticket", obj, "json").done(function (data, textStatus, jqXHR) {
-					msg = "C4C Ticket created.";
+					msg = "Ticket C4C criado";
 					notifications.unshift({
 						"Message": msg,
 						"Time": Date.now(),
@@ -285,7 +285,7 @@ sap.ui.define([
 						},
 						crossDomain: true,
 						success: function (data, textStatus, xhr) {
-							var msg = "S4Hana: Work order " + data.d.Workorder + " created. ";
+							var msg = "S4Hana: Work order " + data.d.Workorder + " criada. ";
 
 							notifications.unshift({
 								"Message": msg,
@@ -339,7 +339,7 @@ sap.ui.define([
 					'Accept': 'application/json'
 				}
 			}).done(function (response) {
-				var msg = "Service Request created. ";
+				var msg = "Requisição de serviço criada ";
 				notifications.unshift({
 					"Message": msg,
 					"Time": Date.now()

@@ -24,9 +24,9 @@
 					<HBox justifyContent="Center" alignItems="Center" class="wipCountStyle sapUiSmallMarginTop">
 						<Text text="50" class="wipCountTextStyle"/>
 					</HBox>
-					<Text text="Average Production Time: "/>
+					<Text text="Tempo Médio de Produçao/Expedição: "/>
 					<Text text="Total: "/>
-					<Text text="Total Items Produced: "/>
+					<Text text="Total Items Produzidos/Expedidos: "/>
 				</VBox>
 				<!--<VBox>-->
 					<!--<HBox class="sapUiMediumMarginBottom">-->
@@ -39,7 +39,7 @@
 							</List>
 							<!--</ScrollContainer>-->
 							<HBox justifyContent="Center" alignItems="Center" class="sapUiMediumMargin">
-								<Text text="Completed"/>
+								<Text text="Concluído"/>
 							</HBox>
 						</VBox>
 					<!--</HBox>-->
@@ -47,8 +47,8 @@
 			</HBox>
 		</content>
 		<buttons>
-			<Button text="Reset Window" press="resetWIPView"/>
-			<Button text="Close" press="closeWIPView"/>
+			<Button text="Resetar Janela" press="resetWIPView"/>
+			<Button text="Fechar" press="closeWIPView"/>
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>

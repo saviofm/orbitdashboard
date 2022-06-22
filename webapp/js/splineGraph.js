@@ -6,16 +6,16 @@ function SplineGraph(splineGraphName){ //, mainData
 	    "scans": 0,
 	    year: 6
 	}, {
-	    "scans": 100,
+	    "scans": 10,
 	    year: 9
 	}, {
-	    "scans": 500,
+	    "scans": 50,
 	    year: 9.5
 	}, {
-	    "scans": 500,
+	    "scans": 50,
 	    year: 16.5
 	}, {
-	    "scans": 100,
+	    "scans": 10,
 	    year: 17
 	},{
 	    "scans": 0,
@@ -45,7 +45,7 @@ function SplineGraph(splineGraphName){ //, mainData
 	
 	//jQuery('.splineChartColor path').remove();
 	
-	var maxHeight = 1000;
+	var maxHeight = 100;
 
 	var vis = d3.select("#" + splineGraphName),
 	    WIDTH = 400,
@@ -123,7 +123,7 @@ function SplineGraph(splineGraphName){ //, mainData
 		splineGraphName = id;
 		
 		if(main[main.length-1].scans >10){
-			maxHeight = 800;
+			maxHeight = 80;
 		}
 	
 		dataOne.attr('d', lineGen(data));

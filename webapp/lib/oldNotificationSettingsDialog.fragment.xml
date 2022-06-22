@@ -11,10 +11,10 @@
 				</HBox>
 				
 				<VBox id="counterfeitBallContainer" visible="true">
-					<Title text="ID of Counterfeit Ball:" class="sapUiSmallMarginBegin"/>
+					<Title text="ID bola falsa:" class="sapUiSmallMarginBegin"/>
 					<Input id="errorBallInput" placeholder="#000000" width="12em" class="sapUiSmallMarginBegin sapUiMediumMarginBottom" liveChange="changeBallIDtoCheck"/>
 					
-					<Title text="Number of failing items to trigger notification: " class="sapUiSmallMarginBegin"/>-->
+					<Title text="Número de itens com erro p/ notificação: " class="sapUiSmallMarginBegin"/>-->
 					<Input id="quantityToGenerateNotitificationInput" placeholder="1<_<50" width="12em" class="sapUiSmallMarginBegin sapUiMediumMarginBottom" liveChange="changeErrorQuantityToCheck"/>
 				</VBox>
 
@@ -55,19 +55,19 @@
 						hSpacing="2"
 						defaultSpan="L12 M12 S12">
 						<l:content>
-							<Label text="Active" class="sapUiSmallMarginTop">
+							<Label text="Ativo" class="sapUiSmallMarginTop">
 								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
 							</Label>
 							<CheckBox id="rulesPhoneActive" selected="{NotificationSettings>/Services/SMS/Active}">
 								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
 							</CheckBox>
-							<Label text="Phone Number"  class="sapUiSmallMarginTop">
+							<Label text="Telefone"  class="sapUiSmallMarginTop">
 								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
 							</Label>
 							<Input id="rulesInputPhoneNum" value="{NotificationSettings>/Services/SMS/PhoneNumber}" >
 								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
 							</Input>
-							<Label text="SMS Message" class="sapUiSmallMarginTop">
+							<Label text="Mensagem SMS" class="sapUiSmallMarginTop">
 								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
 							</Label>
 							<TextArea id="rulesInputPhoneMessage" width="100%" value="{NotificationSettings>/Services/SMS/Text}" >
@@ -99,19 +99,19 @@
 						hSpacing="2"
 						defaultSpan="L12 M12 S12">
 						<l:content>
-							<Label text="Active" class="sapUiSmallMarginTop">
+							<Label text="Ativo" class="sapUiSmallMarginTop">
 								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
 							</Label>
 							<CheckBox id="rulesC4CActive" selected="{NotificationSettings>/Services/C4C/Active}">
 								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
 							</CheckBox>
-							<Label text="C4C Tenant" class="sapUiSmallMarginTop">
+							<Label text="Tenant C4C" class="sapUiSmallMarginTop">
 								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
 							</Label>
 							<Input id="rulesInputC4CTenant" value="{NotificationSettings>/Services/C4C/Tenant}">
 								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
 							</Input>
-							<Label text="C4C Message" class="sapUiSmallMarginTop">
+							<Label text="Mensagem C4C" class="sapUiSmallMarginTop">
 								<layoutData><l:GridData	span="L6 M6 S6" /></layoutData>
 							</Label>
 							<Input id="rulesInputC4CMessage" value="{NotificationSettings>/Services/C4C/Message}">

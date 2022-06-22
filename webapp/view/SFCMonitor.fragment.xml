@@ -7,7 +7,7 @@
 			</VBox>
 		</content>
 		<buttons>
-			<Button text="Close" press="closeSFCMonitor"/>
+			<Button text="Fechar" press="closeSFCMonitor"/>
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>

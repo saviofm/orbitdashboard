@@ -2,7 +2,7 @@
 	<Dialog id="notificationSettingsDialog" contentWidth="720px"  title="Notification Settings"> 
 		<content>
 			<VBox class="sapUiSmallMargin sapUiMediumMarginTop">
-				<Title text="ID of Counterfeit Ball:" class="sapUiSmallMarginBegin"/>
+				<Title text="ID o item com defeito:" class="sapUiSmallMarginBegin"/>
 				<Input	id="errorBallInput" 
 						placeholder="#000000" 
 						width="12em" 
@@ -10,10 +10,10 @@
 						value="0419FE98077C"
 						textAlign="Center"/>
 				
-				<Title text="Number of failing items to trigger notification: " class="sapUiSmallMarginBegin"/>
+				<Title text="Número de itens com erro para notificação: " class="sapUiSmallMarginBegin"/>
 				<Input	id="quantityToGenerateNotification" 
 						width="12em" 
-						placeholder=" Between 1 - 50" 
+						placeholder=" Entre 1 - 50" 
 						class="sapUiSmallMarginBegin sapUiMediumMarginBottom" 
 						type="Number"
 						textAlign="Center"
@@ -25,14 +25,14 @@
 					<IconTabFilter text="SMS">
 						<HBox class="sapUiSmallMargin">
 							<VBox class="sapUiSmallMarginEnd">
-								<Title text="Enable SMS:" class="sapUiSmallMarginTop"/>
-								<Title text="Phone Number: " class="sapUiMediumMarginTop"/>
-								<Title text="SMS Message: " class="sapUiSmallMarginTop"/>
+								<Title text="Ativar SMS:" class="sapUiSmallMarginTop"/>
+								<Title text="Telefone: " class="sapUiMediumMarginTop"/>
+								<Title text="Messagem SMS: " class="sapUiSmallMarginTop"/>
 							</VBox>
 							<VBox>
 								<CheckBox id="rulesSMSCheckbox" />
-								<Input id="rulesSMSPhone" type="Number" width="12em" placeholder="+1xxxxxxxxxx"  />
-								<TextArea id="rulesSMSMessage" width="12em" value="Error detected in manufacturing process!"/>
+								<Input id="rulesSMSPhone" type="Number" width="12em" placeholder="+55xxxxxxxxxx"  />
+								<TextArea id="rulesSMSMessage" width="12em" value="Erro detectado no processo de manufatura!"/>
 							</VBox>
 						</HBox>
 					</IconTabFilter>

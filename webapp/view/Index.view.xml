@@ -9,15 +9,14 @@
 				<content class="sapUiMediumMargin">
 					
 					<!--<Button text="Test" press="sendTestScan"/>-->
-					
 					<!--Side menu-->
 					<Button class="menuButtonStyle" icon="sap-icon://menu2" press="openSideMenu"/>
 					<VBox id="sideMenuID" width="270px" visible="false" alignItems="Center" > 
-						<Text text="ORBIT Configurations" class="tileTitleStyle sapUiSmallMarginBottom" />
+						<Text text="Configurações ORBIT" class="tileTitleStyle sapUiSmallMarginBottom" />
 						<Image src="img/line.png" width="100%" class="sapUiTinyMarginBottom"/>
 						<!--<Button width="200px" text="Heatmap" press="openHeatmap"/>-->
 						<!--<Button width="200px" text="SFC Status" press="openSFCMonitor"/>-->
-						<Button width="200px" text="Activity/WIP Feed" press="switchActivityOrTracking" class="sapUiTinyMarginBottom"/>
+						<Button width="200px" text="Atividade/Feed WIP" press="switchActivityOrTracking" class="sapUiTinyMarginBottom"/>
 						<HBox>
 							<Title text="WIP Range: " class="sapUiTinyMarginEnd sapUiSmallMarginTop"/>
 							<Input id="wipinput1" type="Number" placeholder="min" value="105" width="50px" liveChange="wipInputFields" class="sapUiTinyMarginEnd"/>
@@ -25,7 +24,7 @@
 						</HBox>
 						<Image src="img/line.png" width="100%" class="sapUiSmallMarginTopBottom"/>
 					
-						<Button width="200px" icon="sap-icon://overview-chart" text="Notification Settings" press="openNotificationSettings" />
+						<Button width="200px" icon="sap-icon://overview-chart" text="Config. Notificações" press="openNotificationSettings" />
 						<Button width="200px" icon="sap-icon://building" text="DMC Release Order" press="getListofDMEOrderItems"/>
 						<!--<Button width="200px" icon="sap-icon://syntax" text="DMC Line Monitor" press="openDMELineMonitor"/>-->
 						
@@ -43,11 +42,11 @@
 								<HBox>
 									<!--TOTAL UNITS PRODUCED TODAY TILE-->
 									<VBox id="totalScannedContainer" height="400px" class="sapUiSmallMarginTop">   <!--width="610px"-->
-										<Text text="TODAYS TOTAL UNITS PRODUCED" class="tileTitleStyle" />
+										<Text text="TOTAL DE UNIDADES PRODUZIDAS" class="tileTitleStyle" />
 										<HBox justifyContent="Center" alignItems="Center">
 											<VBox width="90%" alignItems="End">
 												<VBox id="ballCountContainer" justifyContent="Center" alignItems="Center" width="175px">
-													<Text class="whiteSubtextStyle" text="Today's Total"/>
+													<Text class="whiteSubtextStyle" text="Total do dia"/>
 													<Text id="totalUnitsProducedText" class="whiteTextStyle" text="0"/>
 												</VBox>
 											</VBox>
@@ -58,34 +57,34 @@
 											</c:InteractiveBarChart>
 										</HBox>
 										<HBox width="100%" justifyContent="Center" alignItems="Center" class="totalUnitsTodayLabelContainer">
-											<Text text="Hour" class="splineChartLabels sapUiLargeMarginEnd"/>
-											<Text text="Count" class="splineChartLabels"/>
+											<Text text="Hora" class="splineChartLabels sapUiLargeMarginEnd"/>
+											<Text text="Contagem" class="splineChartLabels"/>
 										</HBox>
 									</VBox>
 									
 									<!--PRODUCION RATE TILE-->
 									<VBox id="productionRateContainer" width="480px" height="400px">
-										<Text text="PRODUCTION RATE" class="tileTitleStyle" />
+										<Text text="TAXA PRODUÇÃO" class="tileTitleStyle" />
 										<HBox justifyContent="Center" alignItems="Center" class="sapUiSmallMargin">
 											<Image src="img/stopwatch.png" height="40px" class="sapUiSmallMarginEnd"/>
 											<Text id="averageScansPerHourText" class="blueTextStyle" text="0"/>
-											<Text class="blueSubtextStyle sapUiTinyMarginBegin" text="Units/hr"/>
+											<Text class="blueSubtextStyle sapUiTinyMarginBegin" text="Unidade/hr"/>
 										</HBox>
 										<Image src="img/line.png" width="400px" class="sapUiSmallMarginBeginEnd"/>
 										<HBox width="100%" justifyContent="End" alignItems="End" class="sapUiTinyMarginTop">
 											<Image src="img/blueRect.png" height="6px" width="25px" class="sapUiTinyMarginEnd"/>
-											<Text text="Actual" class="sapUiSmallMarginEnd"/>
+											<Text text="Atual" class="sapUiSmallMarginEnd"/>
 											<Image src="img/yellowRect.png" height="6px" width="25px" class="sapUiTinyMarginEnd"/>
-											<Text text="Expected" class="sapUiMediumMarginEnd"/>
+											<Text text="Esperada" class="sapUiMediumMarginEnd"/>
 										</HBox>
 										
 										<!--SPLINE CHART 2-->
 										<HBox width="100%" justifyContent="Center" alignItems="Center" id="svgContainer">
-											<Text text="Rate" wrapping="false" class="splineChartLabelsHorizontal"/>
+											<Text text="Taxa" wrapping="false" class="splineChartLabelsHorizontal"/>
 											<html:svg width="400px" height="200px" id="splineID" class="splineGraphStyle"/>
 										</HBox>
 										<HBox width="100%" justifyContent="Center" alignItems="Center">
-											<Text text="Hour" class="splineChartLabels"/>
+											<Text text="Hora" class="splineChartLabels"/>
 										</HBox>
 									</VBox>
 								</HBox>
@@ -93,19 +92,19 @@
 								<!--CURRENT CAPACITY TILE-->	
 								<HBox>
 									<VBox id="capacityContainer"  height="400px">
-										<Text text="CAPACITY BY OPERATION" class="tileTitleStyle"/>
+										<Text text="CAPACIDADE POR OPERAÇÃO" class="tileTitleStyle"/>
 										<HBox class="sapUiSmallMarginTop sapUiTinyMarginBeginEnd">
 											<VBox width="150px">
 												<!--GAUGE 1-->
 												<VBox id="gauge1ID"></VBox> 
 											</VBox>
 											<VBox height="145px" width="200px" justifyContent="Center" alignItems="Center"> 
-												<Title text="Assembly" class="yellowTextStylePhase sapUiSmallMarginEnd"/>
+												<Title text="Produção" class="yellowTextStylePhase sapUiSmallMarginEnd"/>
 											</VBox>
 										</HBox>
 										<HBox class="sapUiTinyMarginTop sapUiTinyMarginBeginEnd">
 											<VBox height="145px" width="200px" justifyContent="Center" alignItems="Center">
-												<Title text="Inspection" class="yellowTextStylePhase sapUiSmallMarginBegin"/>
+												<Title text="Expedição" class="yellowTextStylePhase sapUiSmallMarginBegin"/>
 											</VBox>
 											<VBox width="150px">
 												<!--GAUGE 2-->
@@ -116,7 +115,7 @@
 									
 									<!--FAILURE RATE TILE-->
 									<VBox id="failureRateContainer" height="400px">
-										<Text text="FAILURE RATE BY OPERATION" class="tileTitleStyle"/>
+										<Text text="TAXA DE FALHA POR OPERAÇÃO" class="tileTitleStyle"/>
 										<viz:VizFrame id="idFailureBarFrame" uiConfig="{applicationSet:'fiori'}" width="580px" height="300px"
 										vizType='column' legendVisible="false" class="sapUiLargeMarginTop">
 											<viz:dataset>
@@ -145,7 +144,7 @@
 								
 								<!--MESSAGE CENTER TILE-->
 								<VBox id="messageCenterContainer" height="225px">
-									<Text text="MESSAGE CENTER" class="sapUiTinyMarginBottom tileTitleStyle"/>
+									<Text text="CENTRAL DE MENSAGENS" class="sapUiTinyMarginBottom tileTitleStyle"/>
 									<ScrollContainer class="notificationListStyle" vertical="true">
 										<List id="messageCenterList" items="{notificationsModel>/Notifications}" >
 											<StandardListItem title="{notificationsModel>message}"/> <!--{path:'notificationsModel>color', formatter:'.notificationMessageBackground'}   {= ${notificationsModel>color} === '#008FD3'?'blueListItemBackground':'yellowListItemBackground'}-->
@@ -157,12 +156,12 @@
 								<VBox height="575px"  id="feedContainer">
 									<!--Activity Feed container-->
 									<VBox id="activityFeedContainer" visible="false">
-										<Text text="ACTIVITY FEED" class="sapUiSmallMarginBottom tileTitleStyle"/>
+										<Text text="FEED DE ATIVIDADES" class="sapUiSmallMarginBottom tileTitleStyle"/>
 										<HBox width="100%" justifyContent="End" alignItems="End" class="sapUiTinyMarginBottom scannerIdentifierStyle">
 											<Image src="img/blue.png" height="10px" class="sapUiTinyMarginEnd"/>
-											<Text text="Phase 1" class="sapUiSmallMarginEnd"/>
+											<Text text="Fase 1" class="sapUiSmallMarginEnd"/>
 											<Image src="img/yellow.png" height="10px" class="sapUiTinyMarginEnd"/>
-											<Text text="Phase 2" class="sapUiMediumMarginEnd"/>
+											<Text text="Fase 2" class="sapUiMediumMarginEnd"/>
 										</HBox>
 										<ScrollContainer class="feedStyle" vertical="false">
 											<Table id="feedTableID" items="{ballFeed>/results}" ><!--growingThreshold="10" growing="true"-->
@@ -171,10 +170,10 @@
 														<Label text="Scanner"/>
 													</Column>
 													<Column hAlign="Center"  width="70px">
-														<Label text="Time"/>
+														<Label text="Hora"/>
 													</Column>
 													<Column hAlign="Center">
-														<Label text="Serial #"/>
+														<Label text="# Serial"/>
 													</Column>
 												</columns>
 												<items>
@@ -197,7 +196,7 @@
 											<Text id="wipLabel" wrapping="false" text="WORK IN PROCESS" class="sapUiSmallMarginBottom tileTitleStyle"/>
 											<HBox width="100%" justifyContent="End" alignItems="End">
 												<Title id="wipFailingMessageID" text="" class="wipFailingMessageClass" />
-												<Button text="Reset" press="resetWIP"/>
+												<Button text="Resetar" press="resetWIP"/>
 											</HBox>
 										</HBox>
 										<ScrollContainer class="wipStyle" vertical="false">

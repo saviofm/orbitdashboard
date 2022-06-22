@@ -93,7 +93,7 @@ sap.ui.define([
 			this.activateUsageTracking(); //ACTIVATE USAGE TRACKER
 			
 			var notificationsJSON = {
-				Notifications: [{message:"Orbit Dashboard is Running."}],
+				Notifications: [{message:"O Orbit Dashboard está em execução."}],
 				StatusColor : [{color: "#008FD3"}],
 				ReaderStatus: [false, false]
 			}; 
@@ -603,19 +603,19 @@ sap.ui.define([
 		setFailureChartData: function () {
 			var testPeople = {
 				"items": [{
-					"name": "Day 1",
+					"name": "Dia 1",
 					"time": 30,
 					"id": 90
 				}, {
-					"name": "Day 2",
+					"name": "Dia 2",
 					"time": 40,
 					"id": 20
 				}, {
-					"name": "Day 3",
+					"name": "Dia 3",
 					"time": 60,
 					"id": 70
 				}, {
-					"name": "Day 5",
+					"name": "Dia 5",
 					"time": 35,
 					"id": 10
 				}]
@@ -639,10 +639,10 @@ sap.ui.define([
 			var notifications = notificationModel.Notifications;
 			var status = notificationModel.ReaderStatus;
 			// var colors = notificationModel.Status;
-			var phase1Error = "Assembly is Complete.";
-			var phase2Error = "Inspection is Complete.";
-			var phase1Back  = "Assembly is Processing.";
-			var phase2Back  = "Inspection is Processing.";
+			var phase1Error = "Produção está completa.";
+			var phase2Error = "Expedição está completa.";
+			var phase1Back  = "Produção está processando.";
+			var phase2Back  = "Expedição está processando.";
 
 			if(capacity[0] <0.05 && status[0]===true){
 				notifications.unshift({message: phase1Error});
@@ -895,7 +895,7 @@ sap.ui.define([
 			this.getView().byId("wipLabel").setText("WORK IN PROCESS");
 			
 			var notificationsJSON = {
-				Notifications: [{message:"Orbit Dashboard is Running."}],
+				Notifications: [{message:"O Orbit Dashboard está em execução"}],
 				StatusColor : [{color: "#008FD3"}],
 				ReaderStatus: [false, false]
 			}; 
@@ -947,7 +947,7 @@ sap.ui.define([
 		//-----------------------------------------------------------
 		
 		openDMELineMonitor: function(){
-			MessageToast.show("Order number 1241405  submitted with 50 items.");
+			MessageToast.show("Ordem número 1241405 foi criada com 50 items.");
 
 			
 			//this.dmeOrderNumber = '1003275';
@@ -1009,12 +1009,12 @@ sap.ui.define([
 						var dmeOrderQuantity = parseInt(sap.ui.getCore().byId('dmeOrderReleaseQuantity').getValue(), 10);
 						
 						if(dmeOrderQuantity<= 50 && dmeOrderQuantity > 0 && this.dmeOrderNumber.length >0){
-							MessageToast.show("Realeasing Order: Wait for complete message..");
+							MessageToast.show("Liberando Ordem: Espere por mensagem de conclusão..");
 							dialog.close();
 							that.submitDMEOrderRealease(this.dmeOrderNumber, dmeOrderQuantity);
 						}
 						else{
-							MessageToast.show("Order quantity must be between 1-50 and Order Number must be filled out.");
+							MessageToast.show("Quantidade da ordem deve ser entre  1-50 e número da ordem deve ser preenchido.");
 						}
 					}
 				}),
@@ -1051,14 +1051,14 @@ sap.ui.define([
 				"success": function (response) {
 					console.log("DME order data:");
 					console.log(response);
-					MessageToast.show("Order number "+orderNumber+" submitted with "+dmeOrderQuantity+" items.");
+					MessageToast.show("Ordem número "+orderNumber+" enviada com "+dmeOrderQuantity+" items.");
 					dmeActiveItems = response.releasedSfcs; //List of order items release
 					sap.ui.core.BusyIndicator.hide();
 				},
 				"error": function (err) {
 					console.log("Error getting order");
 					//console.log(err);
-					MessageToast.show("Error releasing order. Check order number and quantity.");
+					MessageToast.show("Erro ao liberar a ordem. Verificar número da ordem e quantidade.");
 					sap.ui.core.BusyIndicator.hide();
 				}
 			});
@@ -1229,10 +1229,10 @@ sap.ui.define([
 				type: 'Message',
 				state: 'Error',
 				content: [
-					new Title({text: "Error! Invalid ID \""+ballID+"\" Found!" })
+					new Title({text: "Defeito encontrado em item #\""+ballID+"\"!" })
 				],
 				endButton: new Button({
-					text: 'Okay',
+					text: 'Ok',
 					press: function () {
 						dialog.close();
 					}
@@ -1292,13 +1292,13 @@ sap.ui.define([
 						self.inputParameters = messageParse.inputParams;
 	
 					}
-					MessageToast.show("SMS notification successfully sent to technician.");
+					MessageToast.show("SMS enviado com sucesso para técnico");
 					console.log(message);
 	
 				});
 	
 				self.webSocket.attachError(function (evt) {
-					MessageToast.show("Error sending text.");
+					MessageToast.show("Error ao enviar o texto.");
 					// console.log(evt);
 				});
 	
@@ -1315,7 +1315,7 @@ sap.ui.define([
 			//C4C
 			if(integrationSettings.C4C.Active === true){
 				var obj = {
-					customerName: "Live Digital Manufacturing system down.",
+					customerName: "Sistema de Manufatura e logistica digital desativado.",
 					message: integrationSettings.C4C.Message,
 					tenant: integrationSettings.C4C.Tenant
 				};
@@ -1325,7 +1325,7 @@ sap.ui.define([
 			//Ariba
 			if(integrationSettings.Ariba.Active === true){
 				var obj = {
-					sensor: "Purchase Live Digital Manufacturing."
+					sensor: "Comprar Manufatura e logistica digital."
 				};
 				// SEND ARIBE
 			}
@@ -1407,7 +1407,7 @@ sap.ui.define([
 						self.inputParameters = messageParse.inputParams;
 	
 					}
-					MessageToast.show("SMS notification successfully sent to technician.");
+					MessageToast.show("SMS enviado para o técnico.");
 					console.log(message);
 	
 				});
